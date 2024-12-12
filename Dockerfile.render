@@ -1,0 +1,4 @@
+FROM ghcr.io/activepieces/activepieces:0.37.5
+
+# No need for additional build steps since we're using the pre-built image
+EXPOSE 80
