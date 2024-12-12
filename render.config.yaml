@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: activepieces
+    env: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile.render
+    envVars:
+      - key: AP_POSTGRES_DATABASE
+        value: activepieces
+      - key: AP_POSTGRES_PORT
+        value: 5432
+      - key: AP_ENVIRONMENT
+        value: prod
+      # These will be set from the Render dashboard
+      - key: AP_POSTGRES_HOST
+        sync: false
+      - key: AP_POSTGRES_PASSWORD
+        sync: false
+      - key: AP_POSTGRES_USERNAME
+        sync: false
+      - key: AP_REDIS_URL
+        sync: false
+      - key: AP_JWT_SECRET
+        sync: false
+      - key: AP_ENCRYPTION_KEY
+        sync: false
+      - key: AP_FRONTEND_URL
+        sync: false
