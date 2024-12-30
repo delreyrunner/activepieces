@@ -126,6 +126,13 @@ export class SidenavRoutesListComponent implements OnInit {
     ];
     this.mainDashboardRoutes = [
       {
+        icon: 'assets/img/custom/dashboard/dashboard.svg',
+        caption: $localize`Dashboard`,
+        route: 'dashboard',
+        showInSideNav$: of(true),
+        showLock$: of(false),
+      },
+      {
         icon: 'assets/img/custom/dashboard/flows.svg',
         caption: $localize`Flows`,
         route: 'flows',

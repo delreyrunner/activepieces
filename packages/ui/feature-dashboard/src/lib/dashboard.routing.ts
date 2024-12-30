@@ -23,6 +23,7 @@ import { ApFlagId, ProjectMemberRole } from '@activepieces/shared';
 import { ActivityTableComponent } from './pages/activity-table/activity-table.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { FLAGS_RESOLVE_DATA, FlagsResolver } from './resolvers/flags.resolver';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const DashboardLayoutRouting: Routes = [
   {
@@ -30,7 +31,22 @@ export const DashboardLayoutRouting: Routes = [
     canActivate: [],
     component: DashboardContainerComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: '/flows' },
+      { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
+      {
+        data: {
+          title: $localize`Dashboard`,
+        },
+        path: 'dashboard',
+        pathMatch: 'full',
+        component: DashboardComponent,
+        canActivate: [
+          showBasedOnRoles([
+            ProjectMemberRole.ADMIN,
+            ProjectMemberRole.EDITOR,
+            ProjectMemberRole.VIEWER,
+          ]),
+        ],
+      },
       {
         data: {
           title: $localize`Runs`,
